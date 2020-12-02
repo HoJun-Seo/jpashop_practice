@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ public class MemberRepositoryTest {
 
 	@Test
 	@Transactional
+	@Rollback(false)
 	public void testMember() throws Exception{
 	    //given
 		Member member = new Member();
@@ -38,6 +40,7 @@ public class MemberRepositoryTest {
 		// 그 이유는 바로 일반적으로 test 가 아닌곳에 Transactional 어노테이션이 있으면 정상적으로 트랜잭션이 수행되서 데이터가 저장되나,
 		// Test 에 있는 경우 데이터베이스를 롤백해 버림으로서 데이터가 모두 날아가기 때문이다.
 		// 데이터베이스를 롤백하는 이유는, 데이터가 그대로 남아있으면 반복적인 테스트를 하기 힘들기 때문이다.
+		// 그런데 여기서 @Rollback(false) 로 어노테이션을 하나 더 선언해두면, 데이터베이스가 롤백되지 않고 데이터를 그대로 남겨두고 있는 것을 확인할 수 있다.
 
 	}
 }
