@@ -42,5 +42,11 @@ public class MemberRepositoryTest {
 		// 데이터베이스를 롤백하는 이유는, 데이터가 그대로 남아있으면 반복적인 테스트를 하기 힘들기 때문이다.
 		// 그런데 여기서 @Rollback(false) 로 어노테이션을 하나 더 선언해두면, 데이터베이스가 롤백되지 않고 데이터를 그대로 남겨두고 있는 것을 확인할 수 있다.
 
+		Assertions.assertThat(findmember).isEqualTo(member);
+		System.out.println("findmember == member : " + (findmember == member));
+		// 위의 코드의 결과는 어떻게 나올까? (findmember 와 member 의 == 비교)
+		// 들을 == 비교하면 True 가 나온다
+		// 왜? 한 트랜잭션에서 같은 영속성 컨텍스트에 있을 경우 아이디 값이 같다면 같은 Entity 로 보기 때문이다.
+
 	}
 }
