@@ -1,17 +1,19 @@
 package jpabook.jpashop_practice.repository;
 
 import jpabook.jpashop_practice.domain.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository // Spring Bean 으로 등록한다.(어노테이션을 까보면 @Component 어노테이션으로 컴포넌트의 대상임을 지정하고 있다.)
+@Repository // Spring Bean 으로 등록한다.(어노테이션을 까보면 @Component 어노테이션으로 컴포넌트 스캔 대상임을 지정하고 있다.)
+@RequiredArgsConstructor
 public class MemberRepository {
 
-	@PersistenceContext
-	private EntityManager em;
+	private final EntityManager em;
 
 	public void save(Member member){
 		em.persist(member);
