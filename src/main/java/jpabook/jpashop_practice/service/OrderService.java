@@ -42,7 +42,6 @@ public class OrderService {
 		// 주문 저장
 		orderRepository.save(order); // cascade 옵션으로 인해 내부에 연관관계 메핑된 Entity 데이터들까지 함께 persist 된다.
 		return order.getId();
-
 	}
 
 	// 취소

@@ -13,6 +13,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
 @Getter
+@Setter
 public abstract class Item { // 구현체를 가질 것이기 때문에 추상 클래스로 생성한다.
 
 	@Id @GeneratedValue
