@@ -55,7 +55,7 @@ public class OrderService {
 
 	// 검색
 	/*
-	public List<Order> findOrders(OrderSerach orderSerach){
+	public List<Order> findOrders(OrderSearch orderSerach){
 		return orderRepository.findAll(orderSerach);
 	}
 	 */
