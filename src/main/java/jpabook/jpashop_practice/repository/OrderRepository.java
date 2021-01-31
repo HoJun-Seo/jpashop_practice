@@ -26,6 +26,8 @@ public class OrderRepository {
 		return em.find(Order.class, id);
 	}
 
+	// JPA Criteria 로 동적 쿼리 처리
+	// 추후에 QueryDSL 을 통해 코드를 변경한다.
 	public List<Order> findAllByCriteria(OrderSearch orderSearch){
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Order> cq = cb.createQuery(Order.class);
